@@ -154,7 +154,7 @@ class STTCP_ADMIN
                                                     echo 'selected';
                                                 } ?> value="left">Left</option>
                                     </select>
-                                    <input name="align_horizontal_icon_value" type="number" max="400" min="0" id="right" value="<?php echo $align_horizontal_icon_value ?>" class="sttcp-align-horizontal-icon-input">
+                                    <input name="align_horizontal_icon_value" type="number" max="400" min="0" id="align_horizontal_icon_value" value="<?php echo $align_horizontal_icon_value ?>" class="sttcp-align-horizontal-icon-input">
                                 </div>
                                 <p class="description" id="timezone-description"> Choose Icon Position Horizontally in pixels (px)</p>
 
@@ -174,12 +174,12 @@ class STTCP_ADMIN
                                     <select name="align_vertical_icon" class="sttcp-align-vertical-icon-select" id="align-vertical-icon">
                                         <option <?php if ($align_vertical_icon == 'top') {
                                                     echo 'selected';
-                                                } ?> value="right">Top</option>
+                                                } ?> value="top">Top</option>
                                         <option <?php if ($align_vertical_icon == 'bottom') {
                                                     echo 'selected';
-                                                } ?> value="left">Bottom</option>
+                                                } ?> value="bottom">Bottom</option>
                                     </select>
-                                    <input name="align_vertical_icon_value" type="number" max="400" min="0" id="right" value="<?php echo $align_vertical_icon_value ?>" class="sttcp-align-vertical-icon-input">
+                                    <input name="align_vertical_icon_value" type="number" max="400" min="0" id="align_vertical_icon_value" value="<?php echo $align_vertical_icon_value ?>" class="sttcp-align-vertical-icon-input">
                                 </div>
                                 <p class="description" id="timezone-description"> Choose Icon Position Vertically in pixels (px)</p>
 
@@ -192,6 +192,7 @@ class STTCP_ADMIN
                             <th scope="row"><label for="padding"><?php _e('Padding (px) :', 'sttcp'); ?></label></th>
                             <td>
                                 <input name="padding" type="number" max="100" min="0" id="padding" value="<?php echo $padding ?>" class="regular-text">
+                                <p class="description" id="timezone-description"> Choose Padding in pixels(px) for the icon.</p>
                             </td>
                         </tr>
 
@@ -211,14 +212,12 @@ class STTCP_ADMIN
                             <th scope="row"><label for="additional_css"><?php _e('Additional CSS :', 'sttcp'); ?></label></th>
                             <td>
                                 <textarea name="additional_css" id="additional_css" class="regular-text" rows="10"><?php echo $additional_css ?></textarea>
-                                <p class="description" id="timezone-description"> Class Name for custom CSS is .sttcp</p>
+                                <p class="description" id="timezone-description"> Additional CSS for icon with .sttcp class name.</p>
                             </td>
                         </tr>
-                    </tbody>
-                </table>
 
-                <!-- Submit Button -->
-                <?php submit_button('', 'primary', 'sttcp_submit'); ?>
+                        <!-- Submit Button -->
+                        <?php submit_button('', 'primary', 'sttcp_submit'); ?>
             </form>
         </div>
 <?php
