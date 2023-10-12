@@ -1,5 +1,5 @@
 <?php
-class SSTCP_PUBLIC
+class STTCP_PUBLIC
 {
 
     /*
@@ -9,13 +9,13 @@ class SSTCP_PUBLIC
     {
 
         // sttcp style
-        wp_enqueue_style('sttcp-style', plugin_dir_url(__FILE__) . 'css/sttcp-style.css', [], SSTCP_VERSION);
+        wp_enqueue_style('sttcp-style', plugin_dir_url(__FILE__) . 'css/sttcp-style.css', [], STTCP_VERSION);
 
         // jQuery
         wp_enqueue_script('jquery');
 
         // sttcp script
-        wp_enqueue_script('sttcp-script', plugin_dir_url(__FILE__) . 'js/sttcp-script.js', ['jquery'], SSTCP_VERSION, true);
+        wp_enqueue_script('sttcp-script', plugin_dir_url(__FILE__) . 'js/sttcp-script.js', ['jquery'], STTCP_VERSION, true);
     }
 
 
@@ -25,13 +25,22 @@ class SSTCP_PUBLIC
     public function sttcp_scroll_to_top_callback()
     {
 
-        // Get sstcp options
-        $sstcp_options = !empty(get_option('sstcp_options')) ? get_option('sstcp_options') : [];
-        $bg_color = !empty($sstcp_options['bg_color']) ? esc_attr($sstcp_options['bg_color']) : '#FFFFFF';
-        $height = !empty($sstcp_options['height']) ? esc_attr($sstcp_options['height']) : '50';
-        $width = !empty($sstcp_options['width']) ? esc_attr($sstcp_options['width']) : '50';
-        $border_radius = !empty($sstcp_options['border_radius']) ? esc_attr($sstcp_options['border_radius']) : '50';
-        $right = !empty($sstcp_options['right']) ? esc_attr($sstcp_options['right']) : '25';
+        // Get sttcp options
+        $sttcp_options = !empty(get_option('sttcp_options')) ? get_option('sttcp_options') : [];
+        $bg_color = !empty($sttcp_options['bg_color']) ? esc_attr($sttcp_options['bg_color']) : '#FFFFFF';
+        $height = !empty($sttcp_options['height']) ? esc_attr($sttcp_options['height']) : '50';
+        $width = !empty($sttcp_options['width']) ? esc_attr($sttcp_options['width']) : '50';
+        $border_radius = !empty($sttcp_options['border_radius']) ? esc_attr($sttcp_options['border_radius']) : '50';
+
+        $align_horizontal_icon = !empty($sttcp_options['align_horizontal_icon']) ? esc_attr($sttcp_options['align_horizontal_icon']) : 'right';
+        $align_horizontal_icon_value = !empty($sttcp_options['align_horizontal_icon_value']) ? esc_attr($sttcp_options['align_horizontal_icon_value']) : '25';
+
+        // $right = !empty($sttcp_options['right']) ? esc_attr($sttcp_options['right']) : '25';
+        $bottom = !empty($sttcp_options['bottom']) ? esc_attr($sttcp_options['bottom']) : '25';
+        $padding = !empty($sttcp_options['padding']) ? esc_attr($sttcp_options['padding']) : '0';
+        $icon = !empty($sttcp_options['icon']) ? esc_url($sttcp_options['icon']) : plugin_dir_url( __FILE__ ) . 'images/arrow-top-icon.png';
+
+        $additional_css = !empty($sttcp_options['additional_css']) ? esc_attr($sttcp_options['additional_css']) : '';
 
         ob_start();
 ?>
@@ -41,11 +50,15 @@ class SSTCP_PUBLIC
                 height: <?php echo $height."px" ?>;
                 width: <?php echo $width."px" ?>;
                 border-radius: <?php echo $border_radius."%" ?>;
-                right: <?php echo $right."%" ?>;
+                <?php echo $align_horizontal_icon ?> : <?php echo $align_horizontal_icon_value."px" ?>;
+                bottom: <?php echo $bottom."px" ?>;
+                padding: <?php echo $padding."px" ?>;
             }
+           
+            <?php echo $additional_css; ?>
         </style>
         <div class="sttcp">
-            <img class="sttcp-icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Top_Arrow.svg/1200px-Top_Arrow.svg.png" alt="<?php _e('Scroll to Top', 'sttcp'); ?>" />
+            <img class="sttcp-icon" src="<?php echo $icon ?>" alt="<?php _e('Scroll to Top', 'sttcp'); ?>" />
         </div>
 <?php
         return ob_get_contents();

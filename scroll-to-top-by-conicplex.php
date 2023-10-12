@@ -19,7 +19,21 @@ if (!defined('ABSPATH')) {
 }
 
 // Plugin Version
-define('SSTCP_VERSION', '1.0.0');
+define('STTCP_VERSION', '1.0.0');
+
+/*
+* include admin class
+*/
+require_once(plugin_dir_path( __FILE__ ) .'admin/class-sttcp-admin.php');
+
+// Create admin class object
+$sttcp_admin = new STTCP_ADMIN();
+
+// Hook for admin menu
+add_action( 'admin_menu', [$sttcp_admin, 'admin_menu']);
+
+// Include Admin Script & Style
+add_action('admin_enqueue_scripts', [$sttcp_admin,'sttcp_enqueue_scripts_callback']);
 
 
 /*
@@ -28,21 +42,11 @@ define('SSTCP_VERSION', '1.0.0');
 require_once(plugin_dir_path( __FILE__ ) .'public/class-sttcp-public.php');
 
 // Create public class object
-$sstcp_public = new SSTCP_PUBLIC();
+$sttcp_public = new STTCP_PUBLIC();
 
 // Include Script & Style
-add_action('wp_enqueue_scripts', [$sstcp_public,'sttcp_enqueue_scripts_callback']);
+add_action('wp_enqueue_scripts', [$sttcp_public,'sttcp_enqueue_scripts_callback']);
 
 /* Footer hook */
-add_action('wp_footer', [$sstcp_public,'sttcp_scroll_to_top_callback']);
+add_action('wp_footer', [$sttcp_public,'sttcp_scroll_to_top_callback']);
 
-/*
-* include admin class
-*/
-require_once(plugin_dir_path( __FILE__ ) .'admin/class-sttcp-admin.php');
-
-// Create admin class object
-$sstcp_admin = new SSTCP_ADMIN();
-
-// Hook for admin menu
-add_action( 'admin_menu', [$sstcp_admin, 'admin_menu']);
