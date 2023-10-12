@@ -85,9 +85,6 @@ class STTCP_ADMIN
 
         $additional_css = !empty($sttcp_options['additional_css']) ? esc_attr($sttcp_options['additional_css']) : ".sttcp{\n\n}";
 
-        echo "hi";
-        echo "Hello";
-
         ?>
         <div class="wrap">
             <h1><?php _e('Scroll to Top Settings by ConicPlex', 'sttcp'); ?></h1>
