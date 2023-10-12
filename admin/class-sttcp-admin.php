@@ -165,7 +165,7 @@ class STTCP_ADMIN
                         <tr>
                             <th scope="row">
                                 <label for="align-vertical-icon">
-                                    <? php_e('Align Icon Vertically : :', 'sttcp'); ?>
+                                    <?php _e('Align Icon Vertically :', 'sttcp'); ?>
                                 </label>
 
                             </th>
