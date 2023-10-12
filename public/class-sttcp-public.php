@@ -37,7 +37,7 @@ class STTCP_PUBLIC
 
         // $right = !empty($sttcp_options['right']) ? esc_attr($sttcp_options['right']) : '25';
 
-        $align_vertical_icon = !empty($sttcp_options['align_vertical_icon']) ? esc_attr($sttcp_options['align_vertical_icon']) : 'right';
+        $align_vertical_icon = !empty($sttcp_options['align_vertical_icon']) ? esc_attr($sttcp_options['align_vertical_icon']) : 'bottom';
         $align_vertical_icon_value = !empty($sttcp_options['align_vertical_icon_value']) ? esc_attr($sttcp_options['align_vertical_icon_value']) : '25';
 
         // $bottom = !empty($sttcp_options['bottom']) ? esc_attr($sttcp_options['bottom']) : '25';
