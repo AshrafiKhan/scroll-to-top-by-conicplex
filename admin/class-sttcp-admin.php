@@ -215,9 +215,10 @@ class STTCP_ADMIN
                                 <p class="description" id="timezone-description"> Additional CSS for icon with .sttcp class name.</p>
                             </td>
                         </tr>
-
-                        <!-- Submit Button -->
-                        <?php submit_button('', 'primary', 'sttcp_submit'); ?>
+                    </tbody>
+                </table>
+                <!-- Submit Button -->
+                <?php submit_button('', 'primary', 'sttcp_submit'); ?>
             </form>
         </div>
 <?php
