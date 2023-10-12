@@ -36,25 +36,29 @@ class STTCP_PUBLIC
         $align_horizontal_icon_value = !empty($sttcp_options['align_horizontal_icon_value']) ? esc_attr($sttcp_options['align_horizontal_icon_value']) : '25';
 
         // $right = !empty($sttcp_options['right']) ? esc_attr($sttcp_options['right']) : '25';
-        $bottom = !empty($sttcp_options['bottom']) ? esc_attr($sttcp_options['bottom']) : '25';
+
+        $align_vertical_icon = !empty($sttcp_options['align_vertical_icon']) ? esc_attr($sttcp_options['align_vertical_icon']) : 'right';
+        $align_vertical_icon_value = !empty($sttcp_options['align_vertical_icon_value']) ? esc_attr($sttcp_options['align_vertical_icon_value']) : '25';
+
+        // $bottom = !empty($sttcp_options['bottom']) ? esc_attr($sttcp_options['bottom']) : '25';
         $padding = !empty($sttcp_options['padding']) ? esc_attr($sttcp_options['padding']) : '0';
-        $icon = !empty($sttcp_options['icon']) ? esc_url($sttcp_options['icon']) : plugin_dir_url( __FILE__ ) . 'images/arrow-top-icon.png';
+        $icon = !empty($sttcp_options['icon']) ? esc_url($sttcp_options['icon']) : plugin_dir_url(__FILE__) . 'images/arrow-top-icon.png';
 
         $additional_css = !empty($sttcp_options['additional_css']) ? esc_attr($sttcp_options['additional_css']) : '';
 
         ob_start();
 ?>
         <style>
-            .sttcp{
+            .sttcp {
                 background-color: <?php echo $bg_color ?>;
-                height: <?php echo $height."px" ?>;
-                width: <?php echo $width."px" ?>;
-                border-radius: <?php echo $border_radius."%" ?>;
-                <?php echo $align_horizontal_icon ?> : <?php echo $align_horizontal_icon_value."px" ?>;
-                bottom: <?php echo $bottom."px" ?>;
-                padding: <?php echo $padding."px" ?>;
+                height: <?php echo $height . "px" ?>;
+                width: <?php echo $width . "px" ?>;
+                border-radius: <?php echo $border_radius . "%" ?>;
+                <?php echo $align_horizontal_icon ?>: <?php echo $align_horizontal_icon_value . "px" ?>;
+                <?php echo $align_vertical_icon ?>: <?php echo $align_vertical_icon_value . "px" ?>;
+                padding: <?php echo $padding . "px" ?>;
             }
-           
+
             <?php echo $additional_css; ?>
         </style>
         <div class="sttcp">

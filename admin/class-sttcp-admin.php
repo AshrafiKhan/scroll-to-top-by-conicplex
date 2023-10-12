@@ -50,8 +50,11 @@ class STTCP_ADMIN
             $sttcp_options['align_horizontal_icon'] = sanitize_text_field($_POST['align_horizontal_icon']);
             $sttcp_options['align_horizontal_icon_value'] = absint($_POST['align_horizontal_icon_value']);
 
+            $sttcp_options['align_vertical_icon'] = sanitize_text_field($_POST['align_vertical_icon']);
+            $sttcp_options['align_vertical_icon_value'] = absint($_POST['align_vertical_icon_value']);
 
-            $sttcp_options['bottom'] = absint($_POST['bottom']);
+
+            // $sttcp_options['bottom'] = absint($_POST['bottom']);
             $sttcp_options['padding'] = absint($_POST['padding']);
 
             $sttcp_options['icon'] = sanitize_url($_POST['icon']);
@@ -79,7 +82,10 @@ class STTCP_ADMIN
         $align_horizontal_icon = !empty($sttcp_options['align_horizontal_icon']) ? esc_attr($sttcp_options['align_horizontal_icon']) : 'right';
         $align_horizontal_icon_value = !empty($sttcp_options['align_horizontal_icon_value']) ? esc_attr($sttcp_options['align_horizontal_icon_value']) : '25';
 
-        $bottom = !empty($sttcp_options['bottom']) ? esc_attr($sttcp_options['bottom']) : '25';
+        $align_vertical_icon = !empty($sttcp_options['align_vertical_icon']) ? esc_attr($sttcp_options['align_vertical_icon']) : 'right';
+        $align_vertical_icon_value = !empty($sttcp_options['align_vertical_icon_value']) ? esc_attr($sttcp_options['align_vertical_icon_value']) : '25';
+
+        // $bottom = !empty($sttcp_options['bottom']) ? esc_attr($sttcp_options['bottom']) : '25';
         $padding = !empty($sttcp_options['padding']) ? esc_attr($sttcp_options['padding']) : '10';
         $icon = !empty($sttcp_options['icon']) ? esc_url($sttcp_options['icon']) : plugin_dir_url(__FILE__) . 'images/arrow-top-icon.png';
 
@@ -130,14 +136,11 @@ class STTCP_ADMIN
                             </td>
                         </tr>
 
-                        <!-- To Change the Right -->
+                        <!-- To Change the Horizontal Alignment -->
                         <tr>
                             <th scope="row">
                                 <label for="align-horizontal-icon">
-                                    Align Icon Horizontally :
-                                    <?php
-                                    // _e('Right (px) :', 'sttcp');
-                                    ?>
+                                    <?php _e('Align Icon Horizontally :', 'sttcp'); ?>
                                 </label>
 
                             </th>
@@ -158,13 +161,31 @@ class STTCP_ADMIN
                             </td>
                         </tr>
 
-                        <!-- To Change the Bottom -->
+                        <!-- To Change the Horizontal Alignment -->
                         <tr>
-                            <th scope="row"><label for="bottom"><?php _e('Bottom (px) :', 'sttcp'); ?></label></th>
+                            <th scope="row">
+                                <label for="align-vertical-icon">
+                                    <? php_e('Align Icon Vertically : :', 'sttcp'); ?>
+                                </label>
+
+                            </th>
                             <td>
-                                <input name="bottom" type="number" max="400" min="0" id="bottom" value="<?php echo $bottom ?>" class="regular-text">
+                                <div class="sttcp-align-vertical-icon">
+                                    <select name="align_vertical_icon" class="sttcp-align-vertical-icon-select" id="align-vertical-icon">
+                                        <option <?php if ($align_vertical_icon == 'top') {
+                                                    echo 'selected';
+                                                } ?> value="right">Top</option>
+                                        <option <?php if ($align_vertical_icon == 'bottom') {
+                                                    echo 'selected';
+                                                } ?> value="left">Bottom</option>
+                                    </select>
+                                    <input name="align_vertical_icon_value" type="number" max="400" min="0" id="right" value="<?php echo $align_vertical_icon_value ?>" class="sttcp-align-vertical-icon-input">
+                                </div>
+                                <p class="description" id="timezone-description"> Choose Icon Position Vertically in pixels (px)</p>
+
                             </td>
                         </tr>
+
 
                         <!-- To Change the Padding -->
                         <tr>

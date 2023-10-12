@@ -1,5 +1,5 @@
 
-/*  */
+/*  Style for Horzontal Alignment*/
 .sttcp-align-horizontal-icon{
     display: flex;
     align-items: center;
@@ -13,6 +13,20 @@
     width: 100%;
 }
 
+/*  Style for Vertical Alignment*/
+.sttcp-align-vertical-icon {
+    display: flex;
+    align-items: center;
+    width: 25em;
+}
+
+.sttcp-align-vertical-icon>.sttcp-align-vertical-icon-select {
+    width: 100%;
+}
+
+.sttcp-align-vertical-icon>.sttcp-align-vertical-icon-input {
+    width: 100%;
+}
 
 
 .sttcp-icon{
