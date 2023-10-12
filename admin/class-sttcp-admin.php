@@ -47,7 +47,7 @@ class STTCP_ADMIN
             $sttcp_options['width'] = absint($_POST['width']);
             $sttcp_options['border_radius'] = absint($_POST['border_radius']);
 
-            $sttcp_options['align_horizontal_icon'] = sanitize_text_field($_POST['align_horizontal_icon'] );
+            $sttcp_options['align_horizontal_icon'] = sanitize_text_field($_POST['align_horizontal_icon']);
             $sttcp_options['align_horizontal_icon_value'] = absint($_POST['align_horizontal_icon_value']);
 
 
@@ -81,10 +81,12 @@ class STTCP_ADMIN
 
         $bottom = !empty($sttcp_options['bottom']) ? esc_attr($sttcp_options['bottom']) : '25';
         $padding = !empty($sttcp_options['padding']) ? esc_attr($sttcp_options['padding']) : '10';
-        $icon = !empty($sttcp_options['icon']) ? esc_url($sttcp_options['icon']) : plugin_dir_url( __FILE__ ) . 'images/arrow-top-icon.png';
+        $icon = !empty($sttcp_options['icon']) ? esc_url($sttcp_options['icon']) : plugin_dir_url(__FILE__) . 'images/arrow-top-icon.png';
 
         $additional_css = !empty($sttcp_options['additional_css']) ? esc_attr($sttcp_options['additional_css']) : ".sttcp{\n\n}";
 
+        echo "hi";
+        echo "Hello";
 
         ?>
         <div class="wrap">
@@ -135,18 +137,22 @@ class STTCP_ADMIN
                         <tr>
                             <th scope="row">
                                 <label for="align-horizontal-icon">
-                                    Align Icon Horizontally : 
-                                    <?php 
+                                    Align Icon Horizontally :
+                                    <?php
                                     // _e('Right (px) :', 'sttcp');
-                                     ?>
+                                    ?>
                                 </label>
-                              
+
                             </th>
                             <td>
                                 <div class="sttcp-align-horizontal-icon">
                                     <select name="align_horizontal_icon" class="sttcp-align-horizontal-icon-select" id="align-horizontal-icon">
-                                        <option <?php if($align_horizontal_icon == 'right'){ echo 'selected';} ?> value="right">Right</option>
-                                        <option <?php if($align_horizontal_icon == 'left'){ echo 'selected';} ?> value="left">Left</option>
+                                        <option <?php if ($align_horizontal_icon == 'right') {
+                                                    echo 'selected';
+                                                } ?> value="right">Right</option>
+                                        <option <?php if ($align_horizontal_icon == 'left') {
+                                                    echo 'selected';
+                                                } ?> value="left">Left</option>
                                     </select>
                                     <input name="align_horizontal_icon_value" type="number" max="400" min="0" id="right" value="<?php echo $align_horizontal_icon_value ?>" class="sttcp-align-horizontal-icon-input">
                                 </div>
